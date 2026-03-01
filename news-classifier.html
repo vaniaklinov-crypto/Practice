@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интерактивный интерфейс классификации новостей</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { max-width: 600px; margin: auto; padding: 20px; }
+        .category { margin: 10px 0; }
+        button { padding: 10px 20px; border: none; background-color: #007BFF; color: white; cursor: pointer; }
+        button:hover { background-color: #0056b3; }
+        .prediction { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Классификация новостей</h1>
+        <div class="category">
+            <label for="newsInput">Введите текст ��овости:</label><br>
+            <input type="text" id="newsInput" placeholder="Введите текст новости..." style="width: 100%;"><br>
+        </div>
+        <div class="category">
+            <button onclick="classifyNews()">Классифицировать</button>
+        </div>
+        <div class="prediction" id="predictionDisplay"></div>
+    </div>
+
+    <script>
+        function classifyNews() {
+            const newsText = document.getElementById('newsInput').value;
+            let category;
+            // Пример простой логики классификации
+            if (newsText.includes('инфраструктура')) {
+                category = 'Атаки на инфраструктуру';
+            } else if (newsText.includes('deepfake') || newsText.includes('медиафальсификация')) {
+                category = 'Deepfake & медиафальсификации';
+            } else if (newsText.includes('автономные системы')) {
+                category = 'Автономные системы и риски';
+            } else {
+                category = 'Другое';
+            }
+            document.getElementById('predictionDisplay').innerText = `Категория: ${category}`;
+        }
+    </script>
+</body>
+</html>
